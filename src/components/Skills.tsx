@@ -16,13 +16,15 @@ export default function Skills() {
   // スキルデータ配列をuseMemoでメモ化してパフォーマンス最適化
   const skills: Skill[] = useMemo(
     () => [
-      { name: "Unity", level: 75, color: "#000000" },
-      { name: "C#", level: 70, color: "#239120" },
+      { name: "Unity", level: 65, color: "#000000" },
+      { name: "C#", level: 60, color: "#239120" },
+      { name: "React", level: 55, color: "#61DAFB" },
       { name: "JavaScript", level: 50, color: "#F7DF1E" },
       { name: "HTML/CSS", level: 80, color: "#e34c26" },
+      { name: "Python", level: 40, color: "#3776ab" },
+      { name: "Flask", level: 35, color: "#000000" },
       { name: "C", level: 60, color: "#00599C" },
       { name: "C++", level: 28, color: "#f34b7d" },
-      { name: "Python", level: 40, color: "#3776ab" },
       { name: "Java", level: 50, color: "#ED8B00" },
     ],
     []

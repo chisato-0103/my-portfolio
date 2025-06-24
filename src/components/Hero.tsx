@@ -23,8 +23,8 @@ export default function Hero({ onNavigate }: HeroProps) {
   const messages = useMemo(
     () => [
       "Hello, I am chisato",
-      "Unity Developer",
-      "AR/LiDAR Specialist",
+      "Student Developer",
+      "Unity Learner",
       "Web Creator",
       "東京ゲームショウ参加予定！",
     ],
@@ -82,13 +82,12 @@ export default function Hero({ onNavigate }: HeroProps) {
 
           {/* サブタイトルにもアニメーション追加 */}
           <h2 className="hero-subtitle animated-subtitle">
-            Unity Developer & AR Creator
+            愛知工業大学 情報科学部 学生
           </h2>
 
           {/* 説明文にフェードインエフェクト */}
           <p className="hero-description animated-description">
-            Unity +
-            LiDARで革新的なAR体験を創造。コードとアートの融合で未来を描く。
+            Unity + LiDARを使ったゲーム開発に挑戦中！プログラミングを学びながら新しい体験を作っています。
           </p>
 
           {/* シンプルなボタンアニメーション */}
