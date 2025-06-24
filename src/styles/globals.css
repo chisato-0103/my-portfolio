@@ -105,4 +105,45 @@ body {
   .section-title {
     font-size: 2rem;
   }
+
+  /* ボタンのタッチフレンドリー最適化 */
+  .btn-primary,
+  .btn-outline {
+    min-height: 48px; /* タッチターゲットサイズを確保 */
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 12px; /* タッチしやすい角丸 */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover,
+  .btn-outline:hover {
+    transform: translateY(-2px); /* 軽めのホバーエフェクト */
+  }
+
+  /* テキストの読みやすさ向上 */
+  body {
+    font-size: 16px; /* ベースフォントサイズを大きく */
+    line-height: 1.6;
+  }
+}
+
+/* 小さいスマホ対応 */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    min-height: 44px;
+  }
 }
