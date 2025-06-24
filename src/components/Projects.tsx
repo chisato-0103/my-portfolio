@@ -6,20 +6,19 @@ export default function Projects() {
         <div className="projects-grid">
           <div className="project-card featured">
             <div className="project-header">
-              <h3>東京ゲームショウ AR プロジェクト</h3>
+              <h3>東京ゲームショウ プロジェクト</h3>
               <span className="project-status">開発中</span>
             </div>
             <p className="project-description">
-              Unity + LiDARセンサーを活用した革新的な空間認識ゲーム。
-              リアルタイム3D環境マッピングとAR技術を融合し、
-              プレイヤーの周囲の空間をゲームフィールドとして活用する新感覚の体験を提供します。
+              Unity + LiDARセンサーを使ったゲーム。
+              スクリーンに向かって実際に物を投げて遊ぶゲームで、
+              LiDARセンサーが投げられた物体をスキャン・認識します。
             </p>
             <div className="project-tech">
-              <span className="tech-tag">Unity 2023.x</span>
+              <span className="tech-tag">Unity</span>
               <span className="tech-tag">C#</span>
               <span className="tech-tag">LiDAR</span>
-              <span className="tech-tag">AR Foundation</span>
-              <span className="tech-tag">3D Mapping</span>
+              <span className="tech-tag">物理演算</span>
             </div>
             <div className="project-links">
               <a

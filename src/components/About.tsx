@@ -7,8 +7,8 @@ export default function About() {
           <div className="about-text">
             <p>
               学生として様々なプログラミング言語を学び、特にUnityを使ったゲーム開発に情熱を注いでいます。
-              東京ゲームショウに向けたプロジェクトでは、LiDARセンサーとARFoundationを活用した
-              革新的な空間認識ゲームを開発中です。
+              東京ゲームショウに向けたプロジェクトでは、LiDARセンサーを使って
+              スクリーンに物を投げて遊ぶゲームを開発中です。
             </p>
             <p>
               C#でのUnityスクリプティングからReact + TypeScriptでのWeb開発まで、
