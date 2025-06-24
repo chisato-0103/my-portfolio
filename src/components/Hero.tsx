@@ -22,7 +22,7 @@ export default function Hero({ onNavigate }: HeroProps) {
   // useMemoでメモ化してパフォーマンス最適化
   const messages = useMemo(
     () => [
-      "Hello, I am 粉雪",
+      "Hello, I am chisato",
       "Student Developer",
       "Game Creator",
       "東京ゲームショウ参加予定！",

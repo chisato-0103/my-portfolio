@@ -24,7 +24,7 @@ export default function Header({ onNavigate, activeSection }: HeaderProps) {
           onClick={() => onNavigate(0)}
           style={{ cursor: "pointer" }} // カーソルをポインターに
         >
-          粉雪
+          chisato
         </div>
 
         {/* ナビゲーションメニュー */}
