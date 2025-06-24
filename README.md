@@ -212,7 +212,7 @@ MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照してくださ�
 
 - GitHub Copilot を活用したモダン開発手法
 - 東京ゲームショウ参加予定のチーム開発メンバー（Unity + LiDAR 技術）
-- React・Flask でのWeb開発も学習中
+- React・Flask での Web 開発も学習中
 - システムエンジニア・ゲームエンジニアを目指して日々勉強中
 
 **リンク**

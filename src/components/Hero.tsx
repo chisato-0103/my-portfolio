@@ -87,7 +87,8 @@ export default function Hero({ onNavigate }: HeroProps) {
 
           {/* 説明文にフェードインエフェクト */}
           <p className="hero-description animated-description">
-            Unity + LiDARを使ったゲーム開発に挑戦中！プログラミングを学びながら新しい体験を作っています。
+            Unity +
+            LiDARを使ったゲーム開発に挑戦中！プログラミングを学びながら新しい体験を作っています。
           </p>
 
           {/* シンプルなボタンアニメーション */}
