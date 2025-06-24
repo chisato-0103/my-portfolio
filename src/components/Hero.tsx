@@ -7,7 +7,7 @@ interface HeroProps {
 
 /**
  * Heroセクション - 軽量高パフォーマンス版
- * 
+ *
  * 主な軽量化ポイント：
  * - パーティクルエフェクトを削除（最重要）
  * - マウス追従エフェクトを削除
@@ -70,7 +70,7 @@ export default function Hero({ onNavigate }: HeroProps) {
   return (
     <section className="hero">
       {/* パーティクルエフェクトを削除 - 軽量化の最重要ポイント */}
-      
+
       <div className="hero-content">
         <div className="hero-text">
           {/* 動的タイピングエフェクト付きタイトル */}

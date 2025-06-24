@@ -61,8 +61,8 @@ function App() {
     // パフォーマンス最適化：IntersectionObserverを使用してスクロール処理を軽量化
     const observerOptions = {
       root: null,
-      rootMargin: '-50% 0px -50% 0px', // セクションが画面中央に来たときに反応
-      threshold: 0
+      rootMargin: "-50% 0px -50% 0px", // セクションが画面中央に来たときに反応
+      threshold: 0,
     };
 
     const observer = new IntersectionObserver((entries) => {
