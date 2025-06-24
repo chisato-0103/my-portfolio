@@ -12,6 +12,20 @@ import "./styles/navigation.css";
 import "./styles/sections.css";
 
 function App() {
+  // ページタイトルとメタ情報を設定
+  useEffect(() => {
+    document.title = "chisato | Student Developer & Game Creator";
+
+    // メタ情報も動的に更新
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "chisato - Student Developer & Game Creator. 東京ゲームショウ参加予定のポートフォリオサイト"
+      );
+    }
+  }, []);
+
   // useRefを使って各セクションのDOM要素への参照を作成
   // これにより直接DOM要素にアクセスでき、スクロール操作が可能になる
   const heroRef = useRef<HTMLDivElement>(null);
