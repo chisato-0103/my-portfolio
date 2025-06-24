@@ -11,6 +11,11 @@ body {
   color: #ffffff;
   overflow-x: hidden;
   width: 100%;
+  /* パフォーマンス最適化 */
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
 }
 
 #root {
@@ -22,6 +27,15 @@ body {
   min-height: 100vh;
   width: 100%;
   margin: 0 auto;
+}
+
+/* パフォーマンス最適化：hardware acceleration */
+.hero,
+.icon-3d,
+.skill-progress,
+.project-card {
+  will-change: transform;
+  transform: translateZ(0); /* GPUアクセラレーションを有効化 */
 }
 
 /* Common Styles */

@@ -19,22 +19,18 @@
   bottom: 0;
   background-image: radial-gradient(
       circle at 20% 50%,
-      rgba(120, 119, 198, 0.3) 0%,
+      rgba(120, 119, 198, 0.2) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 20%,
-      rgba(255, 119, 198, 0.3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 80%,
-      rgba(120, 219, 255, 0.3) 0%,
+      rgba(255, 119, 198, 0.2) 0%,
       transparent 50%
     );
-  animation: float 20s ease-in-out infinite;
+  /* 軽量化：アニメーションを削除してCPU使用率を下げる */
 }
 
+/* 軽量化：floatアニメーションを削除
 @keyframes float {
   0%,
   100% {
@@ -43,7 +39,7 @@
   50% {
     transform: translateY(-20px) rotate(180deg);
   }
-}
+} */
 
 .hero-content {
   display: flex;
@@ -248,11 +244,53 @@
 .skill-name {
   font-weight: 600;
   font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-name::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(102, 126, 234, 0.8),
+    transparent
+  );
+  animation: nameUnderline 2s ease-in-out infinite;
+}
+
+@keyframes nameUnderline {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
 }
 
 .skill-percentage {
   color: #667eea;
   font-weight: 600;
+  animation: percentageGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes percentageGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+    transform: scale(1);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+    transform: scale(1.1);
+  }
 }
 
 .skill-bar {
@@ -265,7 +303,7 @@
 .skill-progress {
   height: 100%;
   border-radius: 10px;
-  transition: width 2s ease;
+  transition: width 1.5s ease; /* 軽量化：アニメーション時間を短縮 */
   position: relative;
 }
 
@@ -279,10 +317,10 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.15),
     transparent
   );
-  animation: shimmer 2s infinite;
+  animation: shimmer 3s infinite; /* 軽量化：アニメーション間隔を長く */
 }
 
 @keyframes shimmer {
@@ -473,32 +511,894 @@
   width: 100%;
 }
 
-/* Responsive Design */
+/* 🚀 SUPER FLASHY ANIMATIONS - 超派手なアニメーション群 🚀 */
+
+/* ナビゲーションのアクティブ状態アニメーション */
+.nav-item {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.nav-item.active {
+  color: #667eea;
+  transform: translateY(-2px) scale(1.05);
+  text-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+}
+
+.nav-item.active::after {
+  width: 120% !important;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  animation: rainbow-flow 2s ease-in-out infinite;
+}
+
+@keyframes rainbow-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 超派手なタイトルアニメーション */
+.animated-title {
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  text-shadow: 0 0 10px rgba(102, 126, 234, 0.5),
+    0 0 20px rgba(102, 126, 234, 0.3), 0 0 30px rgba(102, 126, 234, 0.2);
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(102, 126, 234, 0.5),
+      0 0 20px rgba(102, 126, 234, 0.3), 0 0 30px rgba(102, 126, 234, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.8),
+      0 0 30px rgba(102, 126, 234, 0.6), 0 0 40px rgba(102, 126, 234, 0.4),
+      0 0 50px rgba(102, 126, 234, 0.2);
+  }
+}
+
+/* サブタイトルアニメーション */
+.animated-subtitle {
+  animation: slideInFromLeft 1s ease-out 0.5s both;
+  opacity: 0;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 説明文アニメーション */
+.animated-description {
+  animation: fadeInUp 1s ease-out 1s both;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 超派手なボタンアニメーション */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  animation: buttonPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-glow:hover::before {
+  left: 100%;
+}
+
+.btn-glow .btn-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 60%
+  );
+  animation: shine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(300%) rotate(45deg);
+  }
+}
+
+@keyframes buttonPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.8),
+      0 0 50px rgba(102, 126, 234, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* アウトラインボタンのパルスアニメーション */
+.btn-pulse {
+  position: relative;
+  animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+    border-color: rgba(102, 126, 234, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(102, 126, 234, 0.6);
+    border-color: rgba(102, 126, 234, 1);
+  }
+}
+
+.btn-pulse .btn-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.3);
+  transform: translate(-50%, -50%);
+  animation: ripple 2s ease-out infinite;
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+/* 軽量3Dフローティングアイコン（パフォーマンス重視版） */
+.floating-icons-3d {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  perspective: 800px; /* 軽量化のため数値を下げる */
+}
+
+.icon-3d {
+  position: absolute;
+  font-size: 2.5rem; /* サイズを少し小さく */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.03)
+  );
+  backdrop-filter: blur(8px); /* ブラー効果を軽量化 */
+  border-radius: 15px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease; /* 必要最小限のtransition */
+  animation: lightFloat 8s ease-in-out infinite; /* 軽量アニメーション */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* 軽量シャドウ */
+}
+
+.icon-3d:hover {
+  transform: translateY(-5px) scale(1.1); /* ホバー効果を軽量化 */
+}
+
+/* 各アイコンの配置を簡略化（3個に削減） */
+.icon-0 {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+.icon-1 {
+  bottom: 20px;
+  left: 20px;
+  animation-delay: 2s;
+}
+.icon-2 {
+  bottom: 20px;
+  right: 20px;
+  animation-delay: 4s;
+}
+
+/* 軽量アニメーション（3D効果を削減） */
+@keyframes lightFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* 強化されたスクロールインジケーター */
+.scroll-indicator-enhanced {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: bounceUpDown 2s ease-in-out infinite;
+}
+
+.scroll-text {
+  font-size: 0.9rem;
+  color: #667eea;
+  font-weight: 600;
+  opacity: 0.8;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: #667eea;
+  animation: arrowBounce 1s ease-in-out infinite;
+}
+
+.scroll-line-animated {
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(
+    to bottom,
+    rgba(102, 126, 234, 1) 0%,
+    rgba(102, 126, 234, 0.5) 50%,
+    transparent 100%
+  );
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes bounceUpDown {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(102, 126, 234, 0.8);
+  }
+}
+
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    height: 20px;
+  }
+  50% {
+    opacity: 1;
+    height: 40px;
+  }
+}
+
+/* パーティクルエフェクト用のコンテナ */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* 🎯 SKILLS SECTION SUPER ANIMATIONS - スキルセクション超派手アニメーション 🎯 */
+
+/* スキルアイテムの登場アニメーション */
+.skill-item-animated {
+  animation: skillItemSlideIn 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+@keyframes skillItemSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-10px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* エキスパートバッジのアニメーション */
+.skill-excellence-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.2);
+  animation: badgeFloat 3s ease-in-out infinite;
+  z-index: 10;
+}
+
+.badge-icon {
+  animation: starTwinkle 2s ease-in-out infinite;
+}
+
+.badge-text {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@keyframes badgeFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4),
+      0 0 20px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6),
+      0 0 30px rgba(255, 215, 0, 0.4);
+  }
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 1);
+  }
+}
+
+/* スキルアイテムのホバーエフェクト強化 */
+.skill-item:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(102, 126, 234, 0.4),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.6);
+}
+
+.skill-item:hover .skill-name {
+  color: #667eea;
+  text-shadow: 0 0 10px rgba(102, 126, 234, 0.6);
+}
+
+.skill-item:hover .skill-progress-animated {
+  box-shadow: 0 0 30px currentColor, inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* レスポンシブ対応 */
 @media (max-width: 768px) {
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-    padding: 0 1rem;
+  .skill-excellence-badge {
+    top: -5px;
+    right: -5px;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.6rem;
   }
 
-  .hero-title {
-    font-size: 2.5rem;
+  .skill-item-animated {
+    animation-duration: 1s;
+  }
+}
+
+/* パフォーマンス最適化：モーション設定を尊重 */
+@media (prefers-reduced-motion: reduce) {
+  .skill-item-animated,
+  .skill-name::after,
+  .skill-percentage-animated,
+  .skill-progress-animated::before,
+  .skill-progress-animated::after,
+  .skill-excellence-badge,
+  .badge-icon {
+    animation: none;
   }
 
-  .hero-buttons {
-    justify-content: center;
+  .skill-item:hover {
+    transform: none;
+  }
+}
+
+/* 🚀 PERFORMANCE OPTIMIZATIONS - パフォーマンス最適化 🚀 */
+
+/* スケルトンローディングアニメーション */
+@keyframes skeleton {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* GPU加速のための最適化 */
+.hero,
+.floating-icons-3d,
+.icon-3d,
+.btn-glow,
+.btn-pulse,
+.skill-progress-animated,
+.particles-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* スムーズなスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
+/* フォントの最適化 */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap; /* フォントの遅延読み込み最適化 */
+  src: url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+}
+
+/* 🎨 EXTREME VISUAL EFFECTS - 極限視覚効果 🎨 */
+
+/* ホログラム効果 */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+      45deg,
+      transparent 40%,
+      rgba(0, 255, 255, 0.03) 50%,
+      transparent 60%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 40%,
+      rgba(255, 0, 255, 0.03) 50%,
+      transparent 60%
+    );
+  animation: hologram 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes hologram {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ネオングリッド背景 */
+.hero::before {
+  background-image: radial-gradient(
+      circle at 20% 50%,
+      rgba(120, 119, 198, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 119, 198, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(120, 219, 255, 0.3) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 48%,
+      rgba(102, 126, 234, 0.05) 50%,
+      transparent 52%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 48%,
+      rgba(102, 126, 234, 0.05) 50%,
+      transparent 52%
+    );
+  background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+  animation: float 20s ease-in-out infinite, gridMove 10s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 0, 0 0, 0 0, 50px 50px, 50px 50px;
+  }
+}
+
+/* 極限ボタンエフェクト */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  animation: buttonShimmer 3s ease-in-out infinite;
+}
+
+@keyframes buttonShimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+/* 極限3Dアイコン */
+.icon-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.icon-3d::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  transform: translateZ(-10px);
+  opacity: 0.5;
+  filter: blur(5px);
+}
+
+.icon-3d:hover {
+  transform: translateY(-20px) rotateY(360deg) rotateX(15deg) scale(1.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(102, 126, 234, 0.8),
+    inset 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* 極限パーティクル効果 */
+.particles-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      1px 1px at 20% 30%,
+      rgba(102, 126, 234, 0.3),
+      transparent
+    ),
+    radial-gradient(1px 1px at 40% 70%, rgba(255, 119, 198, 0.3), transparent),
+    radial-gradient(1px 1px at 90% 40%, rgba(120, 219, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 60% 90%, rgba(255, 205, 84, 0.3), transparent);
+  background-size: 50px 50px, 80px 80px, 60px 60px, 70px 70px;
+  animation: particleFloat 20s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(240deg);
+  }
+}
+
+/* 極限テキストエフェクト */
+.hero-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGradient 4s ease-in-out infinite;
+}
+
+@keyframes titleGradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 極限スクロールインジケーター */
+.scroll-indicator-enhanced {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 極限セクションタイトル */
+.section-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(102, 126, 234, 0.2),
+    transparent
+  );
+  animation: titleSweep 3s ease-in-out infinite;
+}
+
+@keyframes titleSweep {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+/* 極限セクション背景 */
+.about {
+  background: linear-gradient(135deg, #111 0%, #1a1a2e 100%),
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(102, 126, 234, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(255, 119, 198, 0.1) 0%,
+      transparent 50%
+    );
+  background-attachment: fixed;
+}
+
+.projects {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(120, 219, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 205, 84, 0.1) 0%,
+      transparent 50%
+    );
+  background-attachment: fixed;
+}
+
+.contact {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(102, 126, 234, 0.1) 0%,
+      transparent 50%
+    );
+  background-attachment: fixed;
+}
+
+/* 極限プロジェクトカード */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.02)
+    ),
+    linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(255, 119, 198, 0.1));
+  background-clip: padding-box, border-box;
+  backdrop-filter: blur(20px);
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(102, 126, 234, 0.1) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+/* 極限コンタクトリンク */
+.contact-link {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(102, 126, 234, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.contact-link:hover::before {
+  left: 100%;
+}
+
+/* 最終的なレスポンシブ調整 */
+@media (max-width: 768px) {
+  .hero::before,
+  .about,
+  .projects,
+  .contact {
+    background-attachment: scroll; /* モバイルでfixed背景を無効化 */
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .btn-glow,
+  .btn-pulse {
+    animation-duration: 3s; /* モバイルでアニメーション速度を調整 */
   }
+}
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-links {
-    flex-direction: column;
-    align-items: center;
+/* 極限のダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  .hero::after {
+    background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(0, 255, 255, 0.05) 50%,
+        transparent 60%
+      ),
+      linear-gradient(
+        -45deg,
+        transparent 40%,
+        rgba(255, 0, 255, 0.05) 50%,
+        transparent 60%
+      );
   }
 }
