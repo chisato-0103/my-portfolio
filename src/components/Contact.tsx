@@ -17,7 +17,7 @@ export default function Contact() {
               <span className="contact-icon">📧</span>
               GitHub
             </a>
-            <a href="x24014xx@aitech.ac.jp" className="contact-link">
+            <a href="mailto:x24014xx@aitech.ac.jp" className="contact-link">
               <span className="contact-icon">💼</span>
               Email
             </a>
