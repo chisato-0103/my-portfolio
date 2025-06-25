@@ -46,6 +46,16 @@ export default function Projects() {
               <span className="tech-tag">TypeScript</span>
               <span className="tech-tag">CSS</span>
             </div>
+            <div className="project-links">
+              <a
+                href="https://github.com/chisato-0103/my-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+              >
+                GitHub →
+              </a>
+            </div>
           </div>
         </div>
       </div>
