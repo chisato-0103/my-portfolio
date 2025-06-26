@@ -6,7 +6,7 @@ export default function Projects() {
         <div className="projects-grid">
           <div className="project-card featured">
             <div className="project-header">
-              <h3>東京ゲームショウ プロジェクト</h3>
+              <h3>東京ゲームショウ 2025 プロジェクト</h3>
               <span className="project-status">開発中</span>
             </div>
             <p className="project-description">
@@ -23,6 +23,31 @@ export default function Projects() {
             <div className="project-links">
               <a
                 href="https://github.com/chisato-0103/TGS2025.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+              >
+                GitHub →
+              </a>
+            </div>
+          </div>
+
+          <div className="project-card">
+            <div className="project-header">
+              <h3>東京ゲームショウ 2024 プロジェクト</h3>
+              <span className="project-status">完了</span>
+            </div>
+            <p className="project-description">
+              去年の東京ゲームショウで展示したゲーム作品。
+              初めてのゲーム開発チャレンジとして制作しました。
+            </p>
+            <div className="project-tech">
+              <span className="tech-tag">Unity</span>
+              <span className="tech-tag">C#</span>
+            </div>
+            <div className="project-links">
+              <a
+                href="https://github.com/chisato-0103"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-link"
