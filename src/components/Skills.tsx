@@ -17,11 +17,11 @@ export default function Skills() {
   const skills: Skill[] = useMemo(
     () => [
       { name: "Unity", level: 65, color: "#000000" },
-      { name: "C#", level: 60, color: "#239120" },
-      { name: "React", level: 55, color: "#61DAFB" },
+      { name: "C#", level: 50, color: "#239120" },
+      { name: "React", level: 45, color: "#61DAFB" },
       { name: "JavaScript", level: 50, color: "#F7DF1E" },
-      { name: "HTML/CSS", level: 80, color: "#e34c26" },
-      { name: "Python", level: 40, color: "#3776ab" },
+      { name: "HTML/CSS", level: 70, color: "#e34c26" },
+      { name: "Python", level: 30, color: "#3776ab" },
       { name: "Flask", level: 15, color: "#000000" },
       { name: "C", level: 60, color: "#00599C" },
       { name: "C++", level: 28, color: "#f34b7d" },
