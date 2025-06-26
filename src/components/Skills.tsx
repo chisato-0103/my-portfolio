@@ -22,7 +22,7 @@ export default function Skills() {
       { name: "JavaScript", level: 50, color: "#F7DF1E" },
       { name: "HTML/CSS", level: 80, color: "#e34c26" },
       { name: "Python", level: 40, color: "#3776ab" },
-      { name: "Flask", level: 35, color: "#000000" },
+      { name: "Flask", level: 15, color: "#000000" },
       { name: "C", level: 60, color: "#00599C" },
       { name: "C++", level: 28, color: "#f34b7d" },
       { name: "Java", level: 50, color: "#ED8B00" },
