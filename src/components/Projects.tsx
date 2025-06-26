@@ -47,7 +47,7 @@ export default function Projects() {
             </div>
             <div className="project-links">
               <a
-                href="https://github.com/chisato-0103"
+                href="https://github.com/chisato-0103/TGS2024.git"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-link"
