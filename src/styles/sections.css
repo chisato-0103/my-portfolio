@@ -1,6 +1,17 @@
 /* Hero Section */
 .hero {
+  /* PCブラウザ用 */
   height: 100vh;
+  min-height: 100vh;
+
+  /* モダンブラウザ向けDynamic Viewport Height */
+  height: 100dvh;
+  min-height: 100dvh;
+
+  /* フォールバック：JavaScript計算値を使用 */
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 100);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -956,14 +967,36 @@
 @media (max-width: 768px) {
   /* Hero セクションのスマホ最適化 */
   .hero {
+    /* 高さ設定を明確に */
     height: 100vh;
-    padding: 2rem 0;
+    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: calc(var(--vh, 1vh) * 100);
+
+    padding: 0;
+    /* 中央揃えを確実に */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* スクロール時の問題を防ぐ */
+    position: relative;
+    overflow: hidden;
   }
 
   .hero-content {
     flex-direction: column;
     text-align: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    /* 縦の中央揃えを保証 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero-title {

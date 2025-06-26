@@ -12,6 +12,23 @@ import "./styles/navigation.css";
 import "./styles/sections.css";
 
 function App() {
+  // ビューポート高さの動的計算（モバイル対応）
+  useEffect(() => {
+    const setVH = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+
+    setVH(); // 初期設定
+    window.addEventListener("resize", setVH);
+    window.addEventListener("orientationchange", setVH);
+
+    return () => {
+      window.removeEventListener("resize", setVH);
+      window.removeEventListener("orientationchange", setVH);
+    };
+  }, []);
+
   // ページタイトルとメタ情報を設定
   useEffect(() => {
     document.title = "chisato | Student Developer & Game Creator";
