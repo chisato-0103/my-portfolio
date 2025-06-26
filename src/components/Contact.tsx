@@ -14,11 +14,11 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="contact-link"
             >
-              <span className="contact-icon">📧</span>
+              <span className="contact-icon">💼</span>
               GitHub
             </a>
             <a href="mailto:x24014xx@aitech.ac.jp" className="contact-link">
-              <span className="contact-icon">💼</span>
+              <span className="contact-icon">📧</span>
               Email
             </a>
           </div>
